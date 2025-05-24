@@ -1,0 +1,32 @@
+name: Python CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-test-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt || true  # (if you use any)
+
+    - name: Run unit tests
+      run: python -m unittest discover
+
+    - name: Build Docker image
+      run: docker build -t my-python-app .
+
+    - name: Run Docker container
+      run: docker run my-python-app
