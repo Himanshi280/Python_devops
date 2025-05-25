@@ -26,10 +26,12 @@ jobs:
     - name: Terraform Plan
       # if: github.event.inputs.terraform_action == 'plan'
       run: terraform plan
+      working-directory: ./terraform
 
     - name: Terraform Apply
       # if: github.event.inputs.terraform_action == 'apply'
       run: terraform apply -auto-approve
+      working-directory: ./terraform
    
   install:
     runs-on: ubuntu-latest
