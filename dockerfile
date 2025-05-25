@@ -25,7 +25,7 @@ CMD ["python", "app.py"]
 
 # RUN python -m unittest discover
 
-# EXPOSE 8080
+# EXPOSE 8000
 
 # CMD ["python", "app.py"]
 
