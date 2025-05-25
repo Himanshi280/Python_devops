@@ -33,6 +33,7 @@ jobs:
    
   install:
     runs-on: ubuntu-latest
+    needs: tf_workflow
     steps:
       - name: SSH into EC2 and install required dependencies + clone project
         uses: appleboy/ssh-action@master
