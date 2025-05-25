@@ -59,28 +59,29 @@ jobs:
             rm -rf Python_devops
             git clone https://github.com/Himanshi280/Python_devops.git
             cd Python_devops
-            sudo docker system prune -a
+            sudo docker system prune -a -f
             sudo docker build -t python .
+            sudo docker run -d -p 8080:8080 --name python python
  
-  build-test-run:
-    runs-on: ubuntu-latest
-    needs: install
+  # build-test-run:
+  #   runs-on: ubuntu-latest
+  #   needs: install
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+  #   steps:
+  #   - name: Checkout repository
+  #     uses: actions/checkout@v3
 
-    # - name: Set up Python
-    #   uses: actions/setup-python@v4
-    #   with:
-    #     python-version: '3.11'
+  #   # - name: Set up Python
+  #   #   uses: actions/setup-python@v4
+  #   #   with:
+  #   #     python-version: '3.11'
 
-    # - name: Install dependencies
-    #   run: pip install -r requirements.txt || true  # (if you use any)
+  #   # - name: Install dependencies
+  #   #   run: pip install -r requirements.txt || true  # (if you use any)
 
-    # - name: Run unit tests
-    #   run: python -m unittest discover
+  #   # - name: Run unit tests
+  #   #   run: python -m unittest discover
 
 
-    - name: Run Docker container
-      run: sudo docker run -d -p 8080:8080 --name python python
+  #   - name: Run Docker container
+  #     run: sudo docker run -d -p 8080:8080 --name python python
