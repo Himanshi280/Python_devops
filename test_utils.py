@@ -1,0 +1,15 @@
+import unittest
+from utils import add
+
+class TestAddFunction(unittest.TestCase):
+    def test_add_positive(self):
+        self.assertEqual(add(3, 4), 7)
+
+    def test_add_negative(self):
+        self.assertEqual(add(-1, -1), -2)
+
+    def test_add_zero(self):
+        self.assertEqual(add(0, 0), 0)
+
+if __name__ == '__main__':
+    unittest.main()
