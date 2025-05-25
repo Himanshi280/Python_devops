@@ -56,9 +56,10 @@ jobs:
             sudo yum install -y docker git
             sudo systemctl start docker
             sudo systemctl enable docker
+            rm -rf Python_devops
             git clone https://github.com/Himanshi280/Python_devops.git
             cd Python_devops
-            docker build -t python .
+            sudo docker build -t python .
  
   build-test-run:
     runs-on: ubuntu-latest
@@ -81,4 +82,4 @@ jobs:
 
 
     - name: Run Docker container
-      run: docker run -d -p 8080:8080 python
+      run: sudo docker run -d -p 8080:8080 python
