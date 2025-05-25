@@ -6,3 +6,8 @@ resource "aws_instance" "web" {
     Name = "Python"
   }
 }
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.web.id
+  allocation_id = "eipalloc-02dc7f5155fb7b253"
+}
