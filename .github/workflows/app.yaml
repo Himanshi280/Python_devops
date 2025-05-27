@@ -38,7 +38,7 @@ jobs:
 
     - name: Terraform Apply
       # if: github.event.inputs.terraform_action == 'apply'
-      run: terraform apply -auto-approve
+      run: terraform destroy -auto-approve
       working-directory: ./terraform
    
   install:
