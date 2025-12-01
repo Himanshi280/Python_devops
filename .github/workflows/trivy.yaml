@@ -1,0 +1,32 @@
+name: Universal Trivy Vulnerability Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # This allows you to trigger the workflow manually from GitHub UI
+
+jobs:
+  trivy-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Trivy
+        run: |
+          # Download the latest stable version of Trivy
+          VERSION=$(curl -s https://api.github.com/repos/aquasecurity/trivy/releases/latest | jq -r .tag_name)
+          wget https://github.com/aquasecurity/trivy/releases/download/${VERSION}/trivy_${VERSION#v}_Linux-64bit.deb
+          sudo dpkg -i trivy_${VERSION#v}_Linux-64bit.deb
+          sudo apt-get install -f  # Ensure any missing dependencies are installed
+
+      - name: Trivy Full Repository Scan (Auto-detect everything)
+        run: |
+          trivy fs \
+            --exit-code 1 \
+            --severity HIGH,CRITICAL \
+            --no-progress \
+            .
