@@ -13,9 +13,9 @@ importlib_metadata==8.5.0
 jmespath==1.0.1
 newrelic==10.11.0
 opentelemetry-api==1.30.0
-protobuf==5.29.3
+protobuf==5.29.5
 //python-dateutil==2.9.0.post0
-requests==2.21.0
+requests==2.21
 s3transfer==0.11.4
 six==1.17.0
 //sqlparse==0.5.0
@@ -26,5 +26,6 @@ wrapt==1.17.2
 xmltodict==0.14.2
 zipp==3.21.0
 //flask==2.3.3
+
 
 
